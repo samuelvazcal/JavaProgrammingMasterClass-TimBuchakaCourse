@@ -29,8 +29,17 @@ public class Main {
 		// call both methods and display the results of the following
 		// a score of 1500, 900, 400, and 50
 
-		displayHighScorePosition("Samuel",1);
-		System.out.println(calculateHighScorePosition(777));
+		int position = calculateHighScorePosition(1001);
+		displayHighScorePosition("Andrea", position);
+
+		position = calculateHighScorePosition(777);
+		displayHighScorePosition("Samuel", position);
+
+		position = calculateHighScorePosition(222);
+		displayHighScorePosition("Sofia", position);
+
+		position = calculateHighScorePosition(88);
+		displayHighScorePosition("Matias", position);
 	}
 
 	public static void displayHighScorePosition(String playersName, int position) {
