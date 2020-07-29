@@ -6,6 +6,5 @@ public class Main {
 
 		System.out.println(TeenNumberChecker.isTeen(9));
 		System.out.println(TeenNumberChecker.isTeen(13));
-
 	}
 }

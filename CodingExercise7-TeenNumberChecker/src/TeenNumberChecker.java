@@ -10,6 +10,4 @@ public class TeenNumberChecker {
 			return true;
 		} else return false;
 	}
-
-
 }
