@@ -12,7 +12,7 @@ public class Main {
 
 		for(int i=2; i <= 8; i++) {
 			double result = calculateInterest(10000,i);
-			System.out.println("10000 at " + i + "% interest = " + result);
+			System.out.println("10000 at " + i + "% interest = " + String.format("%.2f",result));
 		}
 	}
 
