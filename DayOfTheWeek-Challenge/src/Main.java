@@ -1,6 +1,9 @@
 public class Main {
 	public static void main(String[] args) {
+		printDayOfTheWeek(-1);
 		printDayOfTheWeek(2);
+		printDayOfTheWeek(4);
+		printDayOfTheWeek(6);
 	}
 	public static void printDayOfTheWeek(int day) {
 		switch(day){
