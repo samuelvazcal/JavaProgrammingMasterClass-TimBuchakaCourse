@@ -6,7 +6,8 @@ public class InputCalculator {
 		int number = 0;
 		int total = 0;
 		int count = 0;
-		int avg = 0;
+		double avgDouble = 0;
+		long avgLong = 0;
 		Scanner scanner = new Scanner(System.in);
 		while(true) {
 			boolean numberBoolean = scanner.hasNextInt();
@@ -15,11 +16,12 @@ public class InputCalculator {
 				total = total + number;
 				count++;
 			} else {
-				avg = Math.round(total/count);
+				avgDouble = (double) total/ (double) count;
+				avgLong = Math.round(avgDouble);
 				break;
 			}
 		}
-		System.out.println("SUM = " + total + " AVG = " + avg);
+		System.out.println("SUM = " + total + " AVG = " + avgLong);
 	}
 }
 
