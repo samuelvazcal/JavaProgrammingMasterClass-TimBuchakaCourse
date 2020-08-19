@@ -5,7 +5,7 @@ public class PaintJob {
 		double remainingArea = 0;
 		double bucketsToBuy = 0;
 		double factor = 0;
-		if(width <= 0 || height <= 0 || areaPerBucket <= 0 || extraBuckets < 0) {
+		if(getBucketCount(width,height,areaPerBucket) <=0 || extraBuckets < 0) {
 			return -1;
 		} else {
 			area = width * height;
@@ -20,7 +20,7 @@ public class PaintJob {
 	public static int getBucketCount (double width, double height, double areaPerBucket) {
 		double area = 0;
 		double bucketsToBuy = 0;
-		if(width  <= 0 || height <= 0 || areaPerBucket <= 0) {
+		if(getBucketCount(width*height,areaPerBucket)<=0) {
 			return -1;
 		} else {
 			area = width * height;
