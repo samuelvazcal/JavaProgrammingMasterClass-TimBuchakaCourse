@@ -16,5 +16,15 @@ public class Main {
         BankAccount sofiasAccount = new BankAccount("Sofia", "sofia_test@testyourapps.com", "(228) 778-0320");
         System.out.println("\n" + sofiasAccount.getNumber() + ", name " + sofiasAccount.getCustomerName() + ", email" +
                 ": " + sofiasAccount.getCustomerEmailAddress() + ", phone number: " + sofiasAccount.getCustomerPhoneNumber());
+
+        VipCustomer person1 = new VipCustomer();
+        System.out.println("\n" + "Person 1: " + person1.getName());
+
+        VipCustomer person2 = new VipCustomer("Matias","matias_test@sundaysapp.com");
+        System.out.println("Person 2: " + person2.getName());
+
+        VipCustomer person3 = new VipCustomer("Angel",100.0,"angel_@yourfavdomain.com");
+        System.out.println("Person 3: " + person3.getName());
+
     }
 }
