@@ -12,5 +12,9 @@ public class Main {
         samsAccount.withdrawal(100);
         samsAccount.deposit(3200);
         samsAccount.withdrawal(50);
+
+        BankAccount sofiasAccount = new BankAccount("Sofia", "sofia_test@testyourapps.com", "(228) 778-0320");
+        System.out.println("\n" + sofiasAccount.getNumber() + ", name " + sofiasAccount.getCustomerName() + ", email" +
+                ": " + sofiasAccount.getCustomerEmailAddress() + ", phone number: " + sofiasAccount.getCustomerPhoneNumber());
     }
 }
