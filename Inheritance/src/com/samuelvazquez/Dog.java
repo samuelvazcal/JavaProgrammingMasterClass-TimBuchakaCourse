@@ -52,7 +52,7 @@ public class Dog extends Animal{
 		// Dog.move() called
 		// Dog.moveLegs() called
 		// Animal.move() called. Animal is moving at speed 10
-		move(10);
+		super.move(10);
 	}
 
 	@Override
