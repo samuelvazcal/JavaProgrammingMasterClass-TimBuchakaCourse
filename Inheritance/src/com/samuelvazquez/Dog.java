@@ -36,10 +36,40 @@ public class Dog extends Animal{
 		System.out.println("Dog.chew() called");
 	}
 
+	public void walk() {
+		System.out.println("Dog.walk() called");
+		super.move(5);
+	}
+
+	public void run() {
+		System.out.println("Dog.run() called");
+		//super defines where is the method 'move' that should be executed.
+		//e.g for this case, the console will display:
+		//	Dog.run() called
+		//	Animal.move() called. Animal is moving at speed 10
+		//And without super it will run the move method located in this class.
+		// Dog.run() called
+		// Dog.move() called
+		// Dog.moveLegs() called
+		// Animal.move() called. Animal is moving at speed 10
+		move(10);
+	}
+
 	@Override
 	public void eat() {
 		System.out.println("Dog.eat() called");
 		chew();
 		super.eat();
+	}
+
+	public void moveLegs() {
+		System.out.println("Dog.moveLegs() called");
+	}
+
+	@Override
+	public void move(int speed) {
+		System.out.println("Dog.move() called");
+		moveLegs();
+		super.move(speed);
 	}
 }
