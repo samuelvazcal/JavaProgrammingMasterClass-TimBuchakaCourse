@@ -2,13 +2,13 @@ package com.samuelvazquez;
 
 public class Refrigerator {
 	private int doors;
-	private double height;
 	private String brand;
+	private Dimensions dimensions;
 
-	public Refrigerator(int doors, double height, String brand) {
+	public Refrigerator(int doors, String brand, Dimensions dimensions) {
 		this.doors = doors;
-		this.height = height;
 		this.brand = brand;
+		this.dimensions = dimensions;
 	}
 
 	public void coolLevel(int level) {
@@ -19,8 +19,8 @@ public class Refrigerator {
 		return doors;
 	}
 
-	public double getHeight() {
-		return height;
+	public Dimensions getDimensions() {
+		return dimensions;
 	}
 
 	public String getBrand() {

@@ -2,13 +2,13 @@ package com.samuelvazquez;
 
 public class Stove {
 	private int burners;
-	private double wight;
 	private String brand;
+	private Dimensions dimensions;
 
-	public Stove(int burners, double wight, String brand) {
+	public Stove(int burners, String brand, Dimensions dimensions) {
 		this.burners = burners;
-		this.wight = wight;
 		this.brand = brand;
+		this.dimensions = dimensions;
 	}
 
 	public void flameLevel(int level, int burner) {
@@ -19,8 +19,8 @@ public class Stove {
 		return burners;
 	}
 
-	public double getWight() {
-		return wight;
+	public Dimensions getDimensions() {
+		return dimensions;
 	}
 
 	public String getBrand() {

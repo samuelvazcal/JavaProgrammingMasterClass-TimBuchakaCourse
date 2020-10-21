@@ -12,12 +12,35 @@ public class PC {
 	}
 
 	public void powerUp() {
-		theCase.pressPowerButton();
+		getTheCase().pressPowerButton();
 		drawLogo();
 	}
 
 	private void drawLogo() {
 		//fancy graphics
-		monitor.drawPixelAt(1200,50,"blue");
+		getMonitor().drawPixelAt(1200,50,"blue");
+	}
+	private Case getTheCase() {
+		return theCase;
+	}
+
+	public void setTheCase(Case theCase) {
+		this.theCase = theCase;
+	}
+
+	private Monitor getMonitor() {
+		return monitor;
+	}
+
+	public void setMonitor(Monitor monitor) {
+		this.monitor = monitor;
+	}
+
+	private Motherboard getMotherboard() {
+		return motherboard;
+	}
+
+	public void setMotherboard(Motherboard motherboard) {
+		this.motherboard = motherboard;
 	}
 }
