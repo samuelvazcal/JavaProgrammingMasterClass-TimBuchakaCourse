@@ -1,3 +1,5 @@
+package com.samuelvazquez;
+
 public class Car extends Vehicle{
 	private int doors;
 	private int engineCapacity;

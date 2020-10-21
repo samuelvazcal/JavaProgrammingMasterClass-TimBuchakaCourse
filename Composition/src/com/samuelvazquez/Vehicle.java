@@ -1,3 +1,5 @@
+package com.samuelvazquez;
+
 public class Vehicle {
 	private String name;
 
