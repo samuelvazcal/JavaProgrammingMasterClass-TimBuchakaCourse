@@ -22,10 +22,14 @@ public class Main {
 
 	public static double getAverage(int [] array) {
 		int sum = 0;
-		for(int i=0; i< array.length; i++) {
-			sum += array[i];
+//		for(int i=0; i< array.length; i++) {
+//			sum += array[i];
+//		}
+		for(int x:array) {
+			sum += x;
+			//System.out.println("For each x");
 		}
-		return (double) (sum/array.length);
+		return (double) sum/array.length;
 	}
 
 }
