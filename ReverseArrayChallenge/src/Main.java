@@ -14,13 +14,11 @@ public class Main {
 		}
 		System.out.println("\nThis is your reversed array:");
 		reverse(A);
-
-
 	}
 
 	public static int [] getIntegers(int count) {
 		int [] array = new int [count];
-		System.out.println("Enter " + " integers, please:");
+		System.out.println("Enter " + count + " integers, please:");
 		for(int i = 0; i < array.length; i++) {
 			array[i] = scanner.nextInt();
 		}
