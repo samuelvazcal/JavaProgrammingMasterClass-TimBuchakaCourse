@@ -1,6 +1,5 @@
 package com.samuelvazquez;
 
-import javax.swing.*;
 import java.util.Scanner;
 
 
@@ -9,14 +8,14 @@ public class Main {
 	private static PokemonList pokemonList = new PokemonList();
 
 	public static void main(String[] args) {
-		boolean flag = false;
-		int opt = 0;
+		boolean quit = false;
+		int option = 0;
 		printInstructions();
-		while(!flag) {
+		while(!quit) {
 			System.out.println("Enter your option: ");
-			opt = scanner.nextInt();
+			option = scanner.nextInt();
 			scanner.nextLine();
-			switch(opt) {
+			switch(option) {
 				case 0:
 					printInstructions();
 					break;
@@ -24,7 +23,20 @@ public class Main {
 					pokemonList.printPokemonList();
 					break;
 				case 2:
-					addPokemon();
+					addItem();
+					break;
+				case 3:
+					modifyItem();
+					break;
+				case 4:
+					removeItem();
+					break;
+				case 5:
+					searchItem();
+					break;
+				case 6:
+					quit = true;
+					break;
 			}
 		}
 	}
@@ -40,8 +52,35 @@ public class Main {
 		System.out.println("\t 6 - To quit the application");
 	}
 
-	public static void addPokemon() {
-		System.out.println("Enter a new favorite Pokemon:");
+	public static void addItem() {
+		System.out.println("Please enter one of your favorite Pokémon:");
+		//pokemonList.printPokemonList();
 		pokemonList.addPokemon(scanner.nextLine());
+	}
+
+	public static void modifyItem() {
+		System.out.println("Please enter the position that you want to change:");
+		int itemNo = scanner.nextInt();
+		scanner.nextLine();
+		System.out.println("Enter new Pokémon:");
+		String newPokemon = scanner.nextLine();
+		pokemonList.modifyPokemon(itemNo-1, newPokemon);
+	}
+
+	public static void removeItem() {
+		System.out.println("Please enter the position that you want to remove:");
+		int itemNo = scanner.nextInt();
+		scanner.nextLine();
+		pokemonList.removePokemon(itemNo-1);
+	}
+
+	public static void searchItem() {
+		System.out.println("Pokemon you want to search:");
+		String itemSearch = scanner.nextLine();
+		if(pokemonList.searchPokemon(itemSearch)!=null) {
+			System.out.println(itemSearch + " was founded in the list" );
+		} else {
+			System.out.println(itemSearch + " is not in the list");
+		}
 	}
 }
