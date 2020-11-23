@@ -1,5 +1,6 @@
 package com.samuelvazquez;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -35,6 +36,9 @@ public class Main {
 					searchItem();
 					break;
 				case 6:
+					processArrayList();
+					break;
+				case 7:
 					quit = true;
 					break;
 			}
@@ -81,5 +85,15 @@ public class Main {
 		} else {
 			System.out.println(itemSearch + " is not in the list");
 		}
+	}
+
+	public static void processArrayList() {
+		ArrayList<String> newArray = new ArrayList<String>();
+		newArray.addAll(pokemonList.getMyPokemonList());
+
+		ArrayList<String> nextArray = new ArrayList<>(pokemonList.getMyPokemonList());
+
+		String [] myArray = new String[pokemonList.getMyPokemonList().size()];
+		myArray = pokemonList.getMyPokemonList().toArray(myArray);
 	}
 }

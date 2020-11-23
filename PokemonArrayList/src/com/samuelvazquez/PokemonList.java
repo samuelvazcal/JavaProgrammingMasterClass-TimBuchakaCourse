@@ -10,6 +10,16 @@ public class PokemonList {
 		myPokemonList.add(pokemon);
 	}
 
+//	public ArrayList<String> getMyPokemonList() {
+//		return myPokemonList;
+//	}
+
+
+
+	public ArrayList<String> getMyPokemonList() {
+		return myPokemonList;
+	}
+
 	public void printPokemonList() {
 		System.out.println("You have " + myPokemonList.size() + " items in your Pokemon list");
 		for(int i = 0 ; i < myPokemonList.size(); i++) {
