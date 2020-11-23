@@ -17,20 +17,40 @@ public class PokemonList {
 		}
 	}
 
-	public void modifyPokemon(int position, String newPokemon) {
+	public void modifyPokemon(String currentPokemon, String newPokemon) {
+		int position = searchPokemon(currentPokemon);
+		if(position >= 0) {
+			modifyPokemon(position,newPokemon);
+		} else {
+			System.out.println("That Pokémon is not in the list");
+		}
+	}
+
+	private void modifyPokemon(int position, String newPokemon) {
 		myPokemonList.set(position, newPokemon);
 		System.out.println("Pokemon in position " + (position+1) + " has been modified.");
 	}
 
-	public void removePokemon(int position) {
+	public void removePokemon(String newPokemon) {
+		int position = searchPokemon(newPokemon);
+		if(position >= 0) {
+			removePokemon(position);
+		}
+	}
+
+	private void removePokemon(int position) {
 		myPokemonList.remove(position);
 	}
 
-	public String searchPokemon(String searchPokemon) {
-		int position = myPokemonList.indexOf(searchPokemon);
+	private int searchPokemon(String searchPokemon) {
+		return myPokemonList.indexOf(searchPokemon);
+	}
+
+	public boolean onFile(String searchItem) {
+		int position = searchPokemon(searchItem);
 		if(position >= 0) {
-			return myPokemonList.get(position);
+			return true;
 		}
-		return null;
+		return false;
 	}
 }

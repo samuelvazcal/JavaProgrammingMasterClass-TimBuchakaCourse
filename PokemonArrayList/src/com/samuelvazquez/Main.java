@@ -59,25 +59,24 @@ public class Main {
 	}
 
 	public static void modifyItem() {
-		System.out.println("Please enter the position that you want to change:");
-		int itemNo = scanner.nextInt();
-		scanner.nextLine();
+		System.out.println("Please enter the Pokemon name that you want to change:");
+		String itemNo = scanner.nextLine();
 		System.out.println("Enter new Pokémon:");
 		String newPokemon = scanner.nextLine();
-		pokemonList.modifyPokemon(itemNo-1, newPokemon);
+		pokemonList.modifyPokemon(itemNo, newPokemon);
 	}
 
 	public static void removeItem() {
-		System.out.println("Please enter the position that you want to remove:");
-		int itemNo = scanner.nextInt();
-		scanner.nextLine();
-		pokemonList.removePokemon(itemNo-1);
+		System.out.println("Please enter the Pokemon name that you want to remove:");
+		String itemNo = scanner.nextLine();
+		pokemonList.removePokemon(itemNo);
 	}
 
 	public static void searchItem() {
 		System.out.println("Pokemon you want to search:");
 		String itemSearch = scanner.nextLine();
-		if(pokemonList.searchPokemon(itemSearch)!=null) {
+		//if(pokemonList.searchPokemon(itemSearch)!=null) {
+		if(pokemonList.onFile(itemSearch)) {
 			System.out.println(itemSearch + " was founded in the list" );
 		} else {
 			System.out.println(itemSearch + " is not in the list");
