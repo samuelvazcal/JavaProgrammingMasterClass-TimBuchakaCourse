@@ -1,10 +1,10 @@
 package com.samuelvazquez;
 
-public class Contacts {
+public class Contact {
 	private String name;
 	private String phoneNumber;
 
-	public Contacts(String name, String phoneNumber) {
+	public Contact(String name, String phoneNumber) {
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 	}
@@ -17,7 +17,7 @@ public class Contacts {
 		return phoneNumber;
 	}
 
-	public static Contacts createContact(String name, String phoneNumber) {
-		return new Contacts(name, phoneNumber);
+	public static Contact createContact(String name, String phoneNumber) {
+		return new Contact(name, phoneNumber);
 	}
 }
