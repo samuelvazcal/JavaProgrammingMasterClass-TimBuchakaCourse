@@ -35,6 +35,17 @@ public class SystemBank {
 		return true;
 	}
 
+	public boolean removeAccount(Account account) {
+		int foundPosition = findAccount(account);
+		if(foundPosition < 0) {
+			System.out.println(account.getName() + ", was not found.");
+			return false;
+		}
+		this.myAccounts.remove(foundPosition);
+		System.out.println(account.getName() + ", was deleted");
+		return true;
+	}
+
 	//We're going to have two findAccount methods
 	//First one that returns the index position
 	//It's going to return an integer showing us what the element
@@ -57,5 +68,29 @@ public class SystemBank {
 			}
 		}
 		return -1;
+	}
+
+	public String queryAccount(Account account) {
+		if(findAccount(account) >= 0) {
+			return account.getName();
+		}
+		return null;
+	}
+
+	public Account queryAccount(String name) {
+		int position = findAccount(name);
+		if(position >= 0) {
+			return this.myAccounts.get(position);
+		}
+		return null;
+	}
+
+	public void printAccounts() {
+		System.out.println("Account List");
+		for(int i = 0; i < this.myAccounts.size(); i++) {
+			System.out.println((i+1) + ". " +
+					this.myAccounts.get(i).getName() + " -> " +
+					this.myAccounts.get(i).getBankAccount());
+		}
 	}
 }
