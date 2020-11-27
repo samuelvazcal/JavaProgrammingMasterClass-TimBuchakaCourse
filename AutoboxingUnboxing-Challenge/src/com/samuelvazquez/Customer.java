@@ -15,7 +15,7 @@ public class Customer {
 	}
 
 	public void addTransaction(double amount) {
-		System.out.println("Adding transaction...");
+		//System.out.println("Adding transaction...");
 		this.transactions.add(amount);
 	}
 
