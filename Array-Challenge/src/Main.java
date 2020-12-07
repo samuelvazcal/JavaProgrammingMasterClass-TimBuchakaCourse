@@ -31,7 +31,7 @@ public class Main {
 		return array;
 	}
 
-	public static void sortIntegers(int[] array) {
+	public static int [] sortIntegers(int[] array) {
 		System.out.println("\nThe list of integers in descending order is: \r");
 		int temp = 0;
 		for(int i=0;i<array.length-1;i++) {
@@ -46,6 +46,7 @@ public class Main {
 		for(int x:array) {
 			System.out.print(x + " ");
 		}
+		return array;
 	}
 
 
