@@ -14,7 +14,7 @@ public class Main {
 		System.out.println(sam);
 		sam.setWeapon("Shotgun");
 		saveObject(sam);
-		//loadObject(sam);
+		loadObject(sam);
 		System.out.println(sam);
 
 		ISaveable werewolf = new Monster("Werewolf",20,40);
@@ -52,6 +52,10 @@ public class Main {
 		return values;
 	}
 
+	//We use the ISaveable interface as a parameter
+	// By doing that we can actually use any object that is using this interface
+	//that has implemented this interface
+	//We can use this method for saving any type of class
 	public static void saveObject(ISaveable objectToSave) {
 		for(int i=0; i<objectToSave.write().size();i++) {
 			System.out.println("Saving " + objectToSave.write().get(i) + " to storage device");
