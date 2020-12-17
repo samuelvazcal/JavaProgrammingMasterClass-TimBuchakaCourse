@@ -3,7 +3,7 @@ package com.samuelvazquez;
 //This is an abstract class that itself is extending from another abstract class
 //It's implementing the required methods that the Animal class requires it to,
 //but it's also defining an abstract method fly'
-public abstract class Bird extends Animal{
+public abstract class Bird extends Animal implements CanFly{
 
 	public Bird(String name) {
 		super(name);
@@ -19,5 +19,8 @@ public abstract class Bird extends Animal{
 		System.out.println(getName() + " is Breathing in, breathing out, ...");
 	}
 
-	public abstract void fly();
+	@Override
+	public void fly() {
+		System.out.println(getName() + "is flapping its wings");
+	}
 }
