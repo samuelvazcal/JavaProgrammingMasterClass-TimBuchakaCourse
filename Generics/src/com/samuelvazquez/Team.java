@@ -1,5 +1,6 @@
 package com.samuelvazquez;
 
+
 import java.util.ArrayList;
 
 //angle brackets (a diamond) with a T to indicate there's gonna be a type there
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 //actual class we're using,
 
 //This way, we are restricting the type of class that we can actually use for team.
-public class Team<T extends Player> {
+public class Team<T extends Player> implements Comparable<Team<T>> {
 	private String name;
 	int played = 0;
 	int won = 0;
@@ -48,16 +49,21 @@ public class Team<T extends Player> {
 		return this.members.size();
 	}
 
-	public void matchResult(Team opponent, int ourScore, int theirScore) {
+	public void matchResult(Team<T> opponent, int ourScore, int theirScore) {
+		String message;
 		if(ourScore > theirScore) {
 			won++;
+			message = " beat ";
 		} else if(ourScore == theirScore) {
 			tied++;
+			message = " drew with ";
 		} else {
 			lost++;
+			message = " lost to ";
 		}
 		played++;
 		if(opponent!=null) {
+			System.out.println(this.getName() + message + opponent.getName());
 			opponent.matchResult(null, theirScore,ourScore);
 		}
 	}
@@ -66,5 +72,14 @@ public class Team<T extends Player> {
 		return (won*2) + tied;
 	}
 
-
+	@Override
+	public int compareTo(Team<T> team) {
+		if(this.ranking() > team.ranking()) {
+			return -1;
+		} else if(this.ranking() < team.ranking()) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
 }
