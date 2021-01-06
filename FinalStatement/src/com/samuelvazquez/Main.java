@@ -15,5 +15,10 @@ public class Main {
 		int pw = 87654321;
 		Password password = new Password(pw);
 		password.storePassword();
+
+		password.letMeIn(2);
+		password.letMeIn(4564564);
+		password.letMeIn(9323);
+		password.letMeIn(87654321);
 	}
 }

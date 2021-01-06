@@ -1,11 +1,11 @@
 package com.samuelvazquez;
 
 public class Password {
-	public static final int key = 12345678;
-	public final int encryptedPassword;
+	private static final int key = 12345678;
+	private final int encryptedPassword;
 
 	public Password(int password) {
-		this.encryptedPassword = encryptDecrypt(encryptedPassword);
+		this.encryptedPassword = encryptDecrypt(password);
 	}
 
 	private int encryptDecrypt(int password) {
