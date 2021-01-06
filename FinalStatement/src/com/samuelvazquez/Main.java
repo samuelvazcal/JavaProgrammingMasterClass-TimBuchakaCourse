@@ -13,12 +13,18 @@ public class Main {
 		System.out.println(Math.PI);
 
 		int pw = 87654321;
-		Password password = new Password(pw);
+		Password password = new ExtendedPassword(pw);
 		password.storePassword();
 
 		password.letMeIn(2);
 		password.letMeIn(4564564);
 		password.letMeIn(9323);
 		password.letMeIn(87654321);
+
+		//----------------------------------------
+		System.out.println("Main method called");
+		SIBTest test = new SIBTest();
+		test.someMethod();
+		System.out.println("Owner is " + SIBTest.owner);
 	}
 }
