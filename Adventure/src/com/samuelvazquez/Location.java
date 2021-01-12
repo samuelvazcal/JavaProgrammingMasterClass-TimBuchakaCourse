@@ -28,9 +28,10 @@ public class Location {
 		return description;
 	}
 
-	//Instead of just returning the exits map and creating a new HashMap
+	//Instead of just returning the exits map, I'm creating a new HashMap
 	//and passing out exits in the constructor
+	//I'm creating a new HashMap with the content of a collection, in this case 'exits'
 	public Map<String, Integer> getExits() {
-		return new HashMap<String, Integer>(exits);
+		return exits;
 	}
 }
