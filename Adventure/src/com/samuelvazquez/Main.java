@@ -13,7 +13,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         Map<String, Integer> tempExit = new HashMap<String, Integer>();
-        locations.put(0, new Location(0, "You are sitting in front of a computer learning Java",tempExit));
+        locations.put(0, new Location(0, "You are sitting in front of a computer learning Java",null));
         //Adding exits for each location in <this.exits = new HashMap<String, Integer>()>, located in the constructor;
         tempExit.put("W",2);
         tempExit.put("E",3);

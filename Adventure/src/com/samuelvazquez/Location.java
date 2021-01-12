@@ -13,7 +13,13 @@ public class Location {
 		this.locationID = locationID;
 		this.description = description;
 		//we make our class immutable, once an instance is created can't be changed
-		this.exits = new HashMap<String, Integer>(exits);
+		if(exits!=null) {
+			this.exits = new HashMap<String, Integer>(exits);
+		} else {
+			//meaning it's going to create a new HashMap but obviously because there is no valid data pass to this constructor
+			this.exits = new HashMap<String, Integer>();
+		}
+
 		this.exits.put("Q",0);
 	}
 
