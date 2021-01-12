@@ -9,10 +9,11 @@ public class Location {
 	private final String description;
 	private final Map<String, Integer> exits;
 
-	public Location(int locationID, String description) {
+	public Location(int locationID, String description, Map<String, Integer> exits) {
 		this.locationID = locationID;
 		this.description = description;
-		this.exits = new HashMap<String, Integer>();
+		//we make our class immutable, once an instance is created can't be changed
+		this.exits = new HashMap<String, Integer>(exits);
 		this.exits.put("Q",0);
 	}
 
@@ -32,6 +33,6 @@ public class Location {
 	//and passing out exits in the constructor
 	//I'm creating a new HashMap with the content of a collection, in this case 'exits'
 	public Map<String, Integer> getExits() {
-		return exits;
+		return new HashMap<String, Integer>(exits);
 	}
 }
