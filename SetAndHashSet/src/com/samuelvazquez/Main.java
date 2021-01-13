@@ -98,9 +98,23 @@ public class Main {
 		}
 
 		//Printing planets
-		System.out.println("===============");
+//		System.out.println("===============");
+//		for(HeavenlyBody planet : planets) {
+//			System.out.println(planet.getName());
+//		}
+
+		System.out.println("===== Second part: Equals and hashCode =====");
+		HeavenlyBody pluto = new HeavenlyBody("Pluto",842);
+		planets.add(pluto);
+
 		for(HeavenlyBody planet : planets) {
-			System.out.println(planet.getName());
+			System.out.println(planet.getName() + ": " + planet.getOrbitalPeriod());
 		}
+
+		Object o = new Object();
+		o.equals(o);
+		"pluto".equals("");
+
+
 	}
 }
