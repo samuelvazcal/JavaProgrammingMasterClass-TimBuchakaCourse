@@ -1,5 +1,8 @@
 package com.samuelvazquez;
 
+import java.util.Objects;
+
+
 public class Book {
 	private String title;
 	private String author;
@@ -12,6 +15,7 @@ public class Book {
 	}
 
 	//That's why I need to overwrite the equals method and adapt it to my Book class
+	/*
 	@Override
 	public boolean equals(Object obj) {
 		if(obj instanceof Book) {
@@ -27,6 +31,23 @@ public class Book {
 		//And eventually now we have an equals method that works perfectly for our class and future purposes
 		return false;
 	}
+	 */
+
+	//Now using the IntelliJ tool, I can create automatically both methods choosing ISBN as main attribute
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Book book = (Book) o;
+		return ISBN == book.ISBN;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(ISBN);
+	}
 
 	public String getTitle() {
 		return title;
@@ -39,4 +60,5 @@ public class Book {
 	public int getISBN() {
 		return ISBN;
 	}
+
 }

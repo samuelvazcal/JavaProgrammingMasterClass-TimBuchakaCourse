@@ -5,6 +5,7 @@ import java.util.Set;
 
 
 public class Main {
+
 	public static void main(String[] args) {
 		//For this example, ISBN will be our main id to differentiate between objects
 		Client client1 = new Client("Guillermo del Toro", "0001",2000);
@@ -29,16 +30,28 @@ public class Main {
 			System.out.println("Name: " + client.getName() + "| id: " + client.getId() + "| credit: " + client.getCredit());
 		}
 
+
 		System.out.println("*********************");
 		//Now I have two identical books, same author, title and id
 		Book book1 = new Book("The Spider-Man: Our National Menace","J. Jonah Jameson",619);
 		Book book2 = new Book("The Spider-Man: Our National Menace","J. Jonah Jameson",619);
+		//Book book2 = new Book("The Spider-Man: Our National Menace Persists","J. Jonah Jameson",619);
+
+		//What if we assign book2 reference to book1?
+		//Java will detect both object as equals
+		//book1 = book2;
+
+
 		//But the equals method doesn't know everything about my Book class, 'cause is not a predetermined one as String for example
 		//for the equals method, book1 and book2 are no duplicate
 		if(book1.equals(book2)) {
 			System.out.println("They're the same book!");
+			System.out.println("book1 hashcode: " + book1.hashCode());
+			System.out.println("book2 hashcode: " + book2.hashCode());
 		} else {
 			System.out.println("No, they are not the same book!");
+			System.out.println("book1 hashcode: " + book1.hashCode());
+			System.out.println("book2 hashcode: " + book2.hashCode());
 		}
 	}
 }
