@@ -27,5 +27,16 @@ public class Main {
 		for(Client client: clientsSet) {
 			System.out.println("Name: " + client.getName() + "| id: " + client.getId() + "| credit: " + client.getCredit());
 		}
+
+		System.out.println("*********************");
+		//Now I have two identical books, same author, title and id
+		Book book1 = new Book("The Spider-Man: Our National Menace","J. Jonah Jameson",619);
+		Book book2 = new Book("The Spider-Man: Our National Menace","J. Jonah Jameson",619);
+		//But the equals method doesn't know everything about my Book class, 'cause is not a predetermined one as String for example
+		if(book1.equals(book2)) {
+			System.out.println("It's the same book!");
+		} else {
+			System.out.println("No, isn't the same book!");
+		}
 	}
 }
