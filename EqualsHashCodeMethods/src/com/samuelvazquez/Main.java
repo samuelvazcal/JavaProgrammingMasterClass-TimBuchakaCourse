@@ -6,6 +6,7 @@ import java.util.Set;
 
 public class Main {
 	public static void main(String[] args) {
+		//For this example, ISBN will be our main id to differentiate between objects
 		Client client1 = new Client("Guillermo del Toro", "0001",2000);
 		Client client2 = new Client("Rodolfo Neri Vela","0002",1800);
 		Client client3 = new Client("Paola Espinoza","0003",1900);
@@ -33,10 +34,11 @@ public class Main {
 		Book book1 = new Book("The Spider-Man: Our National Menace","J. Jonah Jameson",619);
 		Book book2 = new Book("The Spider-Man: Our National Menace","J. Jonah Jameson",619);
 		//But the equals method doesn't know everything about my Book class, 'cause is not a predetermined one as String for example
+		//for the equals method, book1 and book2 are no duplicate
 		if(book1.equals(book2)) {
-			System.out.println("It's the same book!");
+			System.out.println("They're the same book!");
 		} else {
-			System.out.println("No, isn't the same book!");
+			System.out.println("No, they are not the same book!");
 		}
 	}
 }
