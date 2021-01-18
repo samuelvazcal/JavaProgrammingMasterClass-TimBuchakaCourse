@@ -7,28 +7,34 @@ import java.util.Scanner;
 
 public class Example {
 	public static void main(String[] args) {
-		int result = divide();
-		System.out.println(result);
+		try {
+			int result = divide();
+			System.out.println(result);
+		} catch(ArithmeticException | NoSuchElementException e) {
+			System.out.println(e.toString());
+			System.out.println("Unable to perform division, autopilot shutting down");
+		}
+
 	}
 
 	private static int divide() {
 		//Division by zero no possible - ArithmeticException
 		//Invalid string -> InputMismatchException
 		int x, y;
-		try {
-			x = getInt();
-			y = getInt();
-		} catch (NoSuchElementException e) {
+		//try {
+		x = getInt();
+		y = getInt();
+		System.out.println("x is " + x + ", y is " + y);
+		return x / y;
+			//When an exception happens each of the catch block is checked in order to see if one of them handles
+			//the particular exception
+		//} catch (NoSuchElementException e) {
 			//To throw an exception we create a new exception object and use the throw statement
 			//generally you should try to be specific as possible and use an appropriate subclasses exception rather
-			throw new ArithmeticException("no suitable input");
-		}
-		System.out.println("x is " + x + ", y is " + y);
-		try {
-			return x / y;
-		} catch(ArithmeticException e) {
-			throw new ArithmeticException("attempt to divide by zero");
-		}
+		//	throw new ArithmeticException("no suitable input");
+		//} catch(ArithmeticException e) {
+		//	throw new ArithmeticException("attempt to divide by zero");
+		//}
 	}
 
 	private static int getInt() {
