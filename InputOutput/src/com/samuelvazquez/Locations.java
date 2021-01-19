@@ -1,5 +1,7 @@
 package com.samuelvazquez;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,6 +10,32 @@ import java.util.Set;
 
 public class Locations implements Map<Integer,Location> {
 	private static Map<Integer, Location> locations = new HashMap<Integer, Location>();
+
+	public static void main(String[] args) {
+		FileWriter locFile = null;
+		try {
+			locFile = new FileWriter("locations.txt");
+			for(Location location : locations.values()) {
+				locFile.write(location.getLocationID()+ "," + location.getDescription()+ "\n");
+			}
+		} catch(IOException e) {
+			System.out.println("In catch block");
+			e.printStackTrace();
+			//finally is a block code that is used to execute (cleanup) important code such as closing connection, stream, etc.
+			//It's always executed whether exception is handled or not
+		} finally {
+			System.out.println("In finally block");
+			try {
+				if(locFile!=null) {
+					System.out.println("Attempting to close locfile");
+					locFile.close();
+				}
+			} catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 
 	//There is only one copy of static data that is shared amongst all classes instances
 	//static initialization block will be executed once and that's when the locations classes loaded
