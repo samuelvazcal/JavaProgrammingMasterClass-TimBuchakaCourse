@@ -11,27 +11,18 @@ import java.util.Set;
 public class Locations implements Map<Integer,Location> {
 	private static Map<Integer, Location> locations = new HashMap<Integer, Location>();
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException{
 		FileWriter locFile = null;
 		try {
 			locFile = new FileWriter("locations.txt");
 			for(Location location : locations.values()) {
 				locFile.write(location.getLocationID()+ "," + location.getDescription()+ "\n");
 			}
-		} catch(IOException e) {
-			System.out.println("In catch block");
-			e.printStackTrace();
-			//finally is a block code that is used to execute (cleanup) important code such as closing connection, stream, etc.
-			//It's always executed whether exception is handled or not
 		} finally {
 			System.out.println("In finally block");
-			try {
-				if(locFile!=null) {
-					System.out.println("Attempting to close locfile");
-					locFile.close();
-				}
-			} catch(IOException e) {
-				e.printStackTrace();
+			if(locFile!=null) {
+				System.out.println("Attempting to close locfile");
+				locFile.close();
 			}
 		}
 	}
