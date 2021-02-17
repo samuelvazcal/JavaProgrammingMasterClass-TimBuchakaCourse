@@ -7,12 +7,12 @@ public class Main {
 	public static void main(String[] args) {
 		//application running our code on the main thread
 		System.out.println(ANSI_PURPLE + "Hello from the main thread.");
-		//creating a thread, creating an instance of the Thread class
 		//creating a thread, creating an instance of a subclass
 		Thread anotherThread = new AnotherThread();
-
+		anotherThread.setName("=Another Thread=");
 		//enables to jvm to run the run method for the thread
-		anotherThread.start();
+		//anotherThread.start();
+		anotherThread.run();
 
 		//another thread as an anonymous class
 		new Thread() {
@@ -20,6 +20,22 @@ public class Main {
 				System.out.println(ANSI_GREEN + "Hello from anonymous class thread");
 			}
 		}.start();
+
+		//we can have any class implements runnable interface and then all we have to do is add run method to that class
+		//we create an instance of the thread class (not a subclass) but this time we pass an instance of the my runnable class to
+		//the thread constructor
+		Thread myRunnableThread = new Thread(new MyRunnable());
+		myRunnableThread.start();
+
+		//we can also have an anonymous class implements runnable and pass an instance of it
+		//to the thread constructor
+		Thread myRunnableThread2 = new Thread(new MyRunnable() {
+			@Override
+			public void run() {
+				System.out.println(ANSI_RED + "Hello from the anonymous class's implementation of run()");
+			}
+		});
+		myRunnableThread2.start();
 
 		System.out.println(ANSI_BLUE + "Hello again from the main thread.");
 
