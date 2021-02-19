@@ -40,8 +40,15 @@ class Countdown {
     //When working with threads we have to synchronize all areas where we think interference can happen.
 
     //We want this whole method to run before another thread gets access to
-    public synchronized void doCountdown() {
+    public void doCountdown() {
         String color;
+        //Second way to prevent race condition is to synchronize a block of statements rather than an entire method
+        //We can synchronize a block of statements that work with an object by forcing threads to acquire the objects
+        //lock before the execute the statement block. Only one thread can hold the lock at a time so other thread that
+        //want the lock will be suspended until the running thread releases it. But we have to use an object that
+        //threads will share (not a local variable). For this particular case it makes sense to synchronize suing the countdown
+        //object that the thread share
+
         switch (Thread.currentThread().getName()) {
             case "Thread 1":
                 color = ThreadColor.ANSI_CYAN;
@@ -53,9 +60,11 @@ class Countdown {
                 color = ThreadColor.ANSI_GREEN;
         }
 
-        for(i=10;i > 0; i--) {
-            //thread can be suspended between steps
-            System.out.println(color + Thread.currentThread().getName() + ": i = " + i);
+        synchronized (this) {
+            for(i=10;i > 0; i--) {
+                //thread can be suspended between steps
+                System.out.println(color + Thread.currentThread().getName() + ": i = " + i);
+            }
         }
     }
 }
