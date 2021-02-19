@@ -23,6 +23,17 @@ public class Main {
 }
 
 class Countdown {
+    //heap, is the applications memory that all threads share, every thread has a thread stack
+    //and that's memory that only that thread can access,
+    //instance variables (fields) JVM allocated it in the heap memory, so threads don't have their
+    //own copy of the variable
+    //local variables are stored in the thread stack, that means that each thread has its own
+    //copy of a local variable. In other words when multiple threads are working with the same object
+    //they in fact share the same object so they don't have their own copy.
+    //So when one thread changes the value of one objects instance variables, the other threads
+    //will see the new value from that point forward
+
+    private int i;
     public void doCountdown() {
         String color;
         switch (Thread.currentThread().getName()) {
@@ -36,7 +47,8 @@ class Countdown {
                 color = ThreadColor.ANSI_GREEN;
         }
 
-        for(int i=10;i > 0; i--) {
+        for(i=10;i > 0; i--) {
+            //thread can be suspended between steps
             System.out.println(color + Thread.currentThread().getName() + ": i = " + i);
         }
     }
