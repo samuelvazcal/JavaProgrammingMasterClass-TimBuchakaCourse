@@ -8,11 +8,10 @@ Two threads counting down from ten using a count down objet
  */
 public class Main {
     public static void main(String[] args) {
-        Countdown countdown1 = new Countdown();
-        Countdown countdown2 = new Countdown();
-        CountdownThread t1 = new CountdownThread(countdown1);
+        Countdown countdown = new Countdown();
+        CountdownThread t1 = new CountdownThread(countdown);
         t1.setName("Thread 1");
-        CountdownThread t2 = new CountdownThread(countdown2);
+        CountdownThread t2 = new CountdownThread(countdown);
         t2.setName("Thread 2");
         t1.start();
         t2.start();
@@ -35,7 +34,13 @@ class Countdown {
     //will see the new value from that point forward
 
     private int i;
-    public void doCountdown() {
+    //the process of controlling when threads execute code and therefore when they can access the
+    //heap is called synchronization. When a method is synchronized only one thread can execute that a time,
+    //and keeps control for these methods class, but no outside of those methods (possible use of instance variable).
+    //When working with threads we have to synchronize all areas where we think interference can happen.
+
+    //We want this whole method to run before another thread gets access to
+    public synchronized void doCountdown() {
         String color;
         switch (Thread.currentThread().getName()) {
             case "Thread 1":
