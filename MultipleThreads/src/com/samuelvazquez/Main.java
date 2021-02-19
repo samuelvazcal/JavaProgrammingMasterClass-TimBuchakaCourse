@@ -8,10 +8,11 @@ Two threads counting down from ten using a count down objet
  */
 public class Main {
     public static void main(String[] args) {
-        Countdown countdown = new Countdown();
-        CountdownThread t1 = new CountdownThread(countdown);
+        Countdown countdown1 = new Countdown();
+        Countdown countdown2 = new Countdown();
+        CountdownThread t1 = new CountdownThread(countdown1);
         t1.setName("Thread 1");
-        CountdownThread t2 = new CountdownThread(countdown);
+        CountdownThread t2 = new CountdownThread(countdown2);
         t2.setName("Thread 2");
         t1.start();
         t2.start();
@@ -28,8 +29,8 @@ class Countdown {
     //instance variables (fields) JVM allocated it in the heap memory, so threads don't have their
     //own copy of the variable
     //local variables are stored in the thread stack, that means that each thread has its own
-    //copy of a local variable. In other words when multiple threads are working with the same object
-    //they in fact share the same object so they don't have their own copy.
+    //copy of a local variable. In other words when multiple threads are working with the same
+    //object (countdown) they in fact share the same object so they don't have their own copy.
     //So when one thread changes the value of one objects instance variables, the other threads
     //will see the new value from that point forward
 
