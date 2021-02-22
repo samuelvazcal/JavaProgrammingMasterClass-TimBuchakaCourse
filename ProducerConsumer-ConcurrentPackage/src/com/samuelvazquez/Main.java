@@ -3,6 +3,7 @@ package com.samuelvazquez;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 import static com.samuelvazquez.Main.EOF;
@@ -65,25 +66,29 @@ class MyProducer implements Runnable {
 class MyConsumer implements Runnable {
     private List<String> buffer;
     private String color;
+    private ReentrantLock bufferLock;
 
-    public MyConsumer(List<String> buffer, String color) {
+    public MyConsumer(List<String> buffer, String color, ReentrantLock bufferLock) {
         this.buffer = buffer;
         this.color = color;
+        this.bufferLock = bufferLock;
     }
 
     public void run() {
         while(true) {
-            synchronized (buffer) {
-                if(buffer.isEmpty()) {
-                    continue;
-                }
-                if(buffer.get(0).equals(EOF)) {
-                    System.out.println(color + "Exiting");
-                    break;
-                } else {
-                    System.out.println(color + "Removed " + buffer.remove(0));
-                }
+            bufferLock.lock();
+            if(buffer.isEmpty()) {
+                bufferLock.unlock();
+                continue;
             }
+            if(buffer.get(0).equals(EOF)) {
+                System.out.println(color + "Exiting");
+                bufferLock.unlock();
+                break;
+            } else {
+                System.out.println(color + "Removed " + buffer.remove(0));
+            }
+            bufferLock.unlock();
         }
     }
 }
