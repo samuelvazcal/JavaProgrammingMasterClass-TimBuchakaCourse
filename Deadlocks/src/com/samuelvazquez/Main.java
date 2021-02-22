@@ -36,9 +36,9 @@ public class Main {
 
 	private static class Thread2 extends Thread {
 		public void run() {
-			synchronized (lock2)
+			synchronized (lock1)
 			{
-				System.out.println("Thread 2: Has lock2");
+				System.out.println("Thread 2: Has lock1");
 				try
 				{
 					Thread.sleep(100);
@@ -47,14 +47,16 @@ public class Main {
 				{
 
 				}
-				System.out.println("Thread 2: Waiting for lock1");
-				synchronized (lock1)
+				//One solution is to make sure that all threads or all the threads will try
+				//to obtain the locks in the same order
+				System.out.println("Thread 2: Waiting for lock2");
+				synchronized (lock2)
 				{
 					System.out.println("Thread 2: Has lock1 and lock2");
 				}
 				System.out.println("Thread 2: Released lock2");
 			}
-			System.out.println("Thread 2: Released lock2. Exiting...");
+			System.out.println("Thread 2: Released lock1. Exiting...");
 		}
 	}
 }
