@@ -37,4 +37,16 @@ class BankAccount {
 			balance -= amount;
 		}
 	}
+
+	public String getAccountNumber() {
+		return accountNumber;
+	}
+
+	public void printAccountMember() {
+		System.out.println("Account number = " + accountNumber);
+	}
+
+	//Make the BnkAccount class threadsafe again using the synchronized keyword
+	//We don't have to make any changes to the code. Because both threads only read the account number,
+	//thread interference isn't an issue. We'b be over-synchronizing the code
 }
