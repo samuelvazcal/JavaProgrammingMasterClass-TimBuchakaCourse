@@ -92,10 +92,14 @@ class BankAccount {
 	//times out, print the message, "Could not get the lock" to the console.
 
 	public void deposit(double amount) {
+
+		boolean status = false;
+
 		try {
 			if(lock.tryLock(1000, TimeUnit.MILLISECONDS)) {
 				try {
 					balance += amount;
+					status = true;
 				} finally {
 					lock.unlock();
 				}
@@ -105,13 +109,18 @@ class BankAccount {
 		} catch(InterruptedException e) {
 			//do something here
 		}
+		System.out.println("Transaction status = " + status);
 	}
 
 	public void withdraw(double amount) {
+
+		boolean status = false;
+
 		try {
 			if(lock.tryLock(1000,TimeUnit.MILLISECONDS)) {
 				try {
 					balance -= amount;
+					status = true;
 				} finally {
 					lock.unlock();
 				}
@@ -121,5 +130,11 @@ class BankAccount {
 		} catch (InterruptedException e) {
 			//do something here
 		}
+		System.out.println("Transaction status = " + status);
 	}
+
+	//Update the code so that the status variable is thread safe
+	//Since the status variable is a local variable, it's already threadsafe.
+	//Local variables are stored on the thread stack, so each thread will have its own copy. Threads won't
+	//interfere with each other when it comes to setting and getting the status value.
 }
