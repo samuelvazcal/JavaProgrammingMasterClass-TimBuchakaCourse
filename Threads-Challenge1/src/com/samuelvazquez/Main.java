@@ -55,6 +55,12 @@ public class Main {
 
         t1.start();
         t2.start();
+
+        //Make the BankAccount class ThreadSafe using the synchronize keyword
+        //There's going to be thread interference when two threads are accessing the same BankAccount
+        //instance at the same time. We have to make the BankAccount threadsafe, and that's our next challenge.
+        //Use the synchronized keyword to make the BankAccount class threadsafe.
+
     }
 
 }
