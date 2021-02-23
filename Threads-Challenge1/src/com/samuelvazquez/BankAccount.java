@@ -1,5 +1,6 @@
 package com.samuelvazquez;
 
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -68,21 +69,57 @@ class BankAccount {
 	//be released.
 	//Don't forget to create the lock instance in the BankAccount constructor.
 
+//	public void deposit(double amount) {
+//		lock.lock();
+//		try {
+//			balance += amount;
+//		} finally {
+//			lock.unlock();
+//		}
+//	}
+//
+//	public void withdraw(double amount) {
+//		lock.lock();
+//		try {
+//			balance -= amount;
+//		} finally {
+//			lock.unlock();
+//		}
+//	}
+
+	//Use tryLock with a timeout value
+	//Instead of using lock(), use tryLock() with a timeout value of 1 second. If the waiting period
+	//times out, print the message, "Could not get the lock" to the console.
+
 	public void deposit(double amount) {
-		lock.lock();
 		try {
-			balance += amount;
-		} finally {
-			lock.unlock();
+			if(lock.tryLock(1000, TimeUnit.MILLISECONDS)) {
+				try {
+					balance += amount;
+				} finally {
+					lock.unlock();
+				}
+			} else {
+				System.out.println("Could not get the lock");
+			}
+		} catch(InterruptedException e) {
+			//do something here
 		}
 	}
 
 	public void withdraw(double amount) {
-		lock.lock();
 		try {
-			balance -= amount;
-		} finally {
-			lock.unlock();
+			if(lock.tryLock(1000,TimeUnit.MILLISECONDS)) {
+				try {
+					balance -= amount;
+				} finally {
+					lock.unlock();
+				}
+			} else {
+				System.out.println("Could not get the lock");
+			}
+		} catch (InterruptedException e) {
+			//do something here
 		}
 	}
 }
