@@ -2,6 +2,7 @@ package com.samuelvazquez;
 
 public class Main {
 
+    //livelock - the threads will never progress but they're not actually blocked
     public static void main(String[] args) {
         final Worker worker1 = new Worker("Worker 1",true);
         final Worker worker2 = new Worker("Worker 2",true);
