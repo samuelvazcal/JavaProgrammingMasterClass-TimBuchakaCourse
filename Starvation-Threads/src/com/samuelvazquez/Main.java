@@ -1,9 +1,13 @@
 package com.samuelvazquez;
 
+import java.util.concurrent.locks.ReentrantLock;
+
+
 public class Main {
     //static variable to synchronize code
     //Only one instance of the object all the threads will be competing therefore for this one instances lock
-    private static Object lock = new Object();
+    //fair lock, guarantees first come first served ordering for getting the lock
+    private static ReentrantLock lock = new ReentrantLock(true);
 
 
     public static void main(String[] args) {
@@ -39,9 +43,13 @@ public class Main {
         @Override
         public void run() {
             for(int i = 0; i < 10; i++) {
-                synchronized (lock) {
+                lock.lock();
+                try {
                     System.out.format(threadColor + "%s: runCount =  %d\n", Thread.currentThread().getName(), runCount++);
                     //execute critical section of code
+                } finally {
+                    //no matter what happens we want to make sure that the lock is released at the end
+                    lock.unlock();
                 }
             }
         }
