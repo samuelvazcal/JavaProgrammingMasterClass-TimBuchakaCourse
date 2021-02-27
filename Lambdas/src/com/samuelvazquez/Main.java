@@ -1,6 +1,8 @@
 package com.samuelvazquez;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -25,7 +27,39 @@ public class Main {
         employeeList.add(emily);
 
         //let's sort the employees by name in ascending order and print results
+//        System.out.println("\nSorting by name: ");
+//        Collections.sort(employeeList, new Comparator<Employee>() {
+//            @Override
+//            public int compare(Employee e1, Employee e2) {
+//                return e1.getName().compareTo(e2.getName());
+//            }
+//        });
 
+        //let's actually change the code to use a lambda expression
+        System.out.println("\nSorting by name using lambda exp: ");
+        Collections.sort(employeeList,
+                (employee1, employee2) -> employee1.getName().compareTo(employee2.getName()));
+
+        for (Employee x : employeeList) {
+            System.out.println(x.getName());
+        }
+
+//        String sillyString = doStringStuff(new UpperConcat() {
+//            @Override
+//            public String upperAndContact(String s1, String s2) {
+//                return s1.toUpperCase() + s2.toUpperCase();
+//            }
+//        },
+//        employeeList.get(0).getName(),employeeList.get(1).getName());
+//        System.out.println(sillyString);
+
+        UpperConcat uc = (s1, s2) -> s1.toUpperCase() + s2.toUpperCase();
+
+    }
+
+    //static method that uses an UpperConcat instance to create new string
+    public final static String doStringStuff(UpperConcat uc, String s1, String s2) {
+        return uc.upperAndContact(s1,s2);
     }
 }
 
@@ -54,3 +88,9 @@ class Employee{
         this.age = age;
     }
 }
+
+interface UpperConcat {
+    public String upperAndContact(String s1, String s2);
+}
+
+
