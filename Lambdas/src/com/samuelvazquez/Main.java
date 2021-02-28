@@ -66,6 +66,9 @@ public class Main {
         String sillyString = doStringStuff(uc,employeeList.get(0).getName(),employeeList.get(1).getName());
         System.out.println(sillyString);
 
+        AnotherClass anotherClass = new AnotherClass();
+        String s = anotherClass.doSomething();
+        System.out.println(s);
     }
 
     //static method that uses an UpperConcat "instance" to create new string.
@@ -104,5 +107,17 @@ class Employee{
 interface UpperConcat {
     public String upperAndConcat(String s1, String s2);
 }
+
+class AnotherClass {
+    public String doSomething(){
+        return Main.doStringStuff(new UpperConcat() {
+            @Override
+            public String upperAndConcat(String s1, String s2) {
+                return s1.toUpperCase() + s2.toUpperCase();
+            }
+        },"String1","String2");
+    }
+}
+
 
 
