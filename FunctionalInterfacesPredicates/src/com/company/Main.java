@@ -2,8 +2,10 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.function.IntPredicate;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public class Main {
     public static void main(String[] args) {
@@ -39,6 +41,19 @@ public class Main {
         System.out.println(greatThan15.test(a+5));
         //we can join predicates and preserve their original functionality
         System.out.println(greatThan15.and(lessThan100).test(50));
+        System.out.println(greatThan15.and(lessThan100).test(15));
+
+        //creating random number old school
+        Random random = new Random();
+//        for(int i= 0; i<10; i++) {
+//            System.out.println(random.nextInt(10));
+//        }
+
+        //creating random number using a supplier
+        Supplier<Integer> randomSupplier = () -> random.nextInt(100);
+        for(int i=0; i<10;i++) {
+            System.out.println(randomSupplier.get());
+        }
 
     }
 
