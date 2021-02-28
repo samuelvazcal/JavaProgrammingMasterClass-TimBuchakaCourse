@@ -58,7 +58,10 @@ public class Main {
         //same algorithm, different implementation, now via lambda exp.
         //Lines A, B, C, D
         //creates UpperConcat instance implementing the interface
-        UpperConcat uc = (s1, s2) -> s1.toUpperCase() + s2.toUpperCase();
+        UpperConcat uc = (s1, s2) -> {
+            String result = s1.toUpperCase() + s2.toUpperCase();
+            return result;
+        };
         //Line Z
         String sillyString = doStringStuff(uc,employeeList.get(0).getName(),employeeList.get(1).getName());
         System.out.println(sillyString);
