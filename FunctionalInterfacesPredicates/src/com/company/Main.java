@@ -7,11 +7,11 @@ import java.util.function.Predicate;
 public class Main {
     public static void main(String[] args) {
         Employee samuel = new Employee("Samuel V",30);
-        Employee lana = new Employee("Lana R", 24);
-        Employee riley = new Employee("Riley R",29);
-        Employee emily = new Employee("Emily W", 22);
-        Employee blair = new Employee("Blair W", 28);
-        Employee savannah = new Employee("Savannah S", 23);
+        Employee lana = new Employee("Andrea B", 28);
+        Employee riley = new Employee("Sofia V",9);
+        Employee emily = new Employee("Angel M", 7);
+        Employee blair = new Employee("Maximiliano S", 5);
+        Employee savannah = new Employee("Miriam V", 3);
 
         List<Employee> employeeList = new ArrayList<>();
         employeeList.add(samuel);
@@ -22,7 +22,13 @@ public class Main {
         employeeList.add(savannah);
 
         printEmployeesByAge(employeeList,"Employees over 25",employee -> employee.getAge()>25);
-        printEmployeesByAge(employeeList,"Employees under 25",employee -> employee.getAge()<25);
+        printEmployeesByAge(employeeList,"\nEmployees under 25",employee -> employee.getAge()<25);
+        printEmployeesByAge(employeeList, "\nEmployees under 10", new Predicate<Employee>() {
+            @Override
+            public boolean test(Employee employee) {
+                return employee.getAge()<10;
+            }
+        });
     }
 
     private static void printEmployeesByAge(List<Employee> employees,String ageText,
