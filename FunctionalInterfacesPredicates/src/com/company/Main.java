@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,44 +21,19 @@ public class Main {
         employeeList.add(blair);
         employeeList.add(savannah);
 
-        System.out.println("Employees over 25 via lambdas");
-        employeeList.forEach(employee -> {
-            if(employee.getAge()>25) {
-                System.out.println(employee.getName());
-            }
-        });
-
-        System.out.println("Employees under 25 via lambdas");
-        employeeList.forEach(employee -> {
-            if(employee.getAge()<25) {
-                System.out.println(employee.getName());
-            }
-        });
-
-//        System.out.println("Employees over 25 before lambdas: ");
-//        System.out.println("===========");
-//        for(Employee employee: employeeList) {
-//            if(employee.getAge() > 25) {
-//                System.out.println(employee.getName());
-//            }
-//        }
-
-        //using foreach iterable
-        //System.out.println("foreach:");
-//        employeeList.forEach(employee -> {
-//            System.out.println(employee.getName());
-//            System.out.println(employee.getAge());
-//        });
+        printEmployeesByAge(employeeList,"Employees over 25",employee -> employee.getAge()>25);
+        printEmployeesByAge(employeeList,"Employees under 25",employee -> employee.getAge()<25);
     }
 
-    private static void printEmployeesByAge(List<Employee> employees) {
+    private static void printEmployeesByAge(List<Employee> employees,String ageText,
+                                            Predicate<Employee> ageCondition) {
         //lambda expression for the above method
-        System.out.println("Employees over 25 via lambdas");
-        employeeList.forEach(employee -> {
-            if(employee.getAge()>25) {
+        System.out.println(ageText);
+        System.out.println("============");
+        for (Employee employee : employees) {
+            if (ageCondition.test(employee)) {
                 System.out.println(employee.getName());
             }
-        });
-
+        }
     }
 }
