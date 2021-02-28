@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.IntPredicate;
 import java.util.function.Predicate;
 
 public class Main {
@@ -11,7 +12,7 @@ public class Main {
         Employee riley = new Employee("Sofia V",9);
         Employee emily = new Employee("Angel M", 7);
         Employee blair = new Employee("Maximiliano S", 5);
-        Employee savannah = new Employee("Miriam V", 3);
+        Employee savannah = new Employee("Jeanne B", 16);
 
         List<Employee> employeeList = new ArrayList<>();
         employeeList.add(samuel);
@@ -29,6 +30,13 @@ public class Main {
                 return employee.getAge()<10;
             }
         });
+
+        IntPredicate intp = i -> i > 15;
+        //it will return false, because 10 isn't greater than 15
+        System.out.println(intp.test(10));
+        int a = 20;
+        System.out.println(intp.test(a+5));
+
     }
 
     private static void printEmployeesByAge(List<Employee> employees,String ageText,
