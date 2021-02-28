@@ -31,11 +31,14 @@ public class Main {
             }
         });
 
-        IntPredicate intp = i -> i > 15;
+        IntPredicate greatThan15 = i -> i > 15;
+        IntPredicate lessThan100 = i -> i < 100;
         //it will return false, because 10 isn't greater than 15
-        System.out.println(intp.test(10));
+        System.out.println(greatThan15.test(10));
         int a = 20;
-        System.out.println(intp.test(a+5));
+        System.out.println(greatThan15.test(a+5));
+        //we can join predicates and preserve their original functionality
+        System.out.println(greatThan15.and(lessThan100).test(50));
 
     }
 
