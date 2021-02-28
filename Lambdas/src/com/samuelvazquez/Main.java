@@ -44,22 +44,31 @@ public class Main {
             System.out.println(x.getName());
         }
 
-//        String sillyString = doStringStuff(new UpperConcat() {
+        //interface implementation, first look for fill the doStringStuff parameters and then
+        //then goes to the rabbit hole (build 'uc', the UpperConcat reference)
+//Z        String sillyString = doStringStuff(new UpperConcat() {
 //            @Override
-//            public String upperAndContact(String s1, String s2) {
-//                return s1.toUpperCase() + s2.toUpperCase();
-//            }
-//        },
-//        employeeList.get(0).getName(),employeeList.get(1).getName());
+//A            public String upperAndConcat(String s1, String s2) {
+//B                //here is where we do the string process to upper case
+//C                return s1.toUpperCase() + s2.toUpperCase();
+//D            }
+//        }, employeeList.get(0).getName(),employeeList.get(1).getName());
 //        System.out.println(sillyString);
 
+        //same algorithm, different implementation, now via lambda exp.
+        //Lines A, B, C, D
+        //creates UpperConcat instance implementing the interface
         UpperConcat uc = (s1, s2) -> s1.toUpperCase() + s2.toUpperCase();
+        //Line Z
+        String sillyString = doStringStuff(uc,employeeList.get(0).getName(),employeeList.get(1).getName());
+        System.out.println(sillyString);
 
     }
 
-    //static method that uses an UpperConcat instance to create new string
+    //static method that uses an UpperConcat "instance" to create new string.
+    //Being static can be used inside static methods
     public final static String doStringStuff(UpperConcat uc, String s1, String s2) {
-        return uc.upperAndContact(s1,s2);
+        return uc.upperAndConcat(s1,s2);
     }
 }
 
@@ -90,7 +99,7 @@ class Employee{
 }
 
 interface UpperConcat {
-    public String upperAndContact(String s1, String s2);
+    public String upperAndConcat(String s1, String s2);
 }
 
 
