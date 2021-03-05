@@ -1,18 +1,22 @@
 package com.samuelvazquez;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 
 public class Main {
 
     public static void main(String[] args) {
 
-        List<Integer> x = elementsArrayList(7);
+        List<Integer> x = elementsArrayList(10);
+        System.out.println("list of random integers");
         displayArrayList(x);
-
+        Collections.sort(x);
+        System.out.println("\nsorted list: ");
+        displayArrayList(x);
+        //Returns index of key in sorted list sorted in ascending order
+        //If key not present, it will return (-(insertion point) -1)
+        int index = Collections.binarySearch(x,2);
+        System.out.println("\n" + index);
 
 
     }
