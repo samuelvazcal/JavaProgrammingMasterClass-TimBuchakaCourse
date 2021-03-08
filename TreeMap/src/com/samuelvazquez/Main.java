@@ -1,5 +1,6 @@
 package com.samuelvazquez;
 
+import java.util.Map;
 import java.util.TreeMap;
 
 
@@ -21,6 +22,9 @@ public class Main {
 		System.out.println(treeMap1);
 		System.out.println(treeMap2);
 
+		for(Map.Entry mapElement : treeMap1.entrySet()) {
+			System.out.println(mapElement.getKey() + " " + mapElement.getValue());
+		}
 
 	}
 }
