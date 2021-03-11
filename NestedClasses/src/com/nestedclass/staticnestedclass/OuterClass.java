@@ -1,4 +1,4 @@
-package com.nestedclasses;
+package com.nestedclass.staticnestedclass;
 /*accessing a static nested class*/
 
 public class OuterClass {

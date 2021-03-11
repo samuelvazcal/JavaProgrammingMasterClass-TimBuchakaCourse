@@ -1,4 +1,4 @@
-package com.nestedclasses;
+package com.nestedclass.staticnestedclass;
 
 public class Main {
 
