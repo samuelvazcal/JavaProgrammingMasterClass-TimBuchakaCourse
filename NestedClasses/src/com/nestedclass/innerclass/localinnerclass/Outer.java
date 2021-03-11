@@ -28,6 +28,9 @@ public class Outer {
         System.out.println("Divisor = "+ inner.getDivisor());
         System.out.println("Remainder = " + inner.getRemainder());
         System.out.println("Quotient = " + inner.getQuotient());
+
+        Inner inner1 = new Inner();
+        System.out.println("A regular test = " + inner1.getQuotient());
     }
 
     public static void main(String[] args) {
